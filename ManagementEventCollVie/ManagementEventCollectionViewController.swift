@@ -65,6 +65,39 @@ class ManagementEventCollectionViewController: UICollectionViewController {
             
         }
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if Constants.isLoadDataAgain{
+            let day: String = Constants.day;
+            let event: Event = Constants.event
+            if day == "Monday" {
+                eventLines[0].events.append(event);
+            }
+            else if day == "Tuesday" {
+                eventLines[1].events.append(event)
+            }
+            else if day == "Wednesday" {
+                eventLines[2].events.append(event)
+            }
+            else if day == "Thursday" {
+                eventLines[3].events.append(event)
+            }
+            else if day == "Friday" {
+                eventLines[4].events.append(event)
+            }
+            else if day == "Saturday" {
+                eventLines[5].events.append(event)
+            }
+            else  {
+                eventLines[6].events.append(event)
+            }
+            // eventInDays = EventInDay.eventInDays()
+            collectionView?.reloadData()
+            Constants.isLoadDataAgain = false;
+            
+        }
+    }
    
 
 }
